@@ -1,1 +1,1 @@
-web: java -jar target/telebot-1.0-SNAPSHOT.jar
+worker: sh target/bin/workerBot
