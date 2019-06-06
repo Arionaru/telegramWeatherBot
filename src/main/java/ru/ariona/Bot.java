@@ -26,6 +26,7 @@ public class Bot extends TelegramLongPollingBot {
         sendMessage.enableMarkdown(true);
         sendMessage.setChatId(chatId);
         sendMessage.setText(s);
+        setButtons(sendMessage);
         try {
             sendMessage(sendMessage);
         } catch (TelegramApiException e) {
@@ -52,7 +53,7 @@ public class Bot extends TelegramLongPollingBot {
         return "823926417:AAEdy_gHi38kLHVaa_juw2s8Oq6r46BbZzg";
     }
 
-    public synchronized void setButtons(SendMessage sendMessage) {
+    private synchronized void setButtons(SendMessage sendMessage) {
         // Создаем клавиуатуру
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
         sendMessage.setReplyMarkup(replyKeyboardMarkup);
