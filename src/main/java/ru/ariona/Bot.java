@@ -17,14 +17,21 @@ import java.util.List;
 public class Bot extends TelegramLongPollingBot {
 
     public void onUpdateReceived(Update update) {
-        String message = update.getMessage().getText();
-        sendMsg(update.getMessage().getChatId().toString(), message);
+        sendMsg(update.getMessage().getChatId().toString(), update.getMessage().getText());
     }
 
-    public synchronized void sendMsg(String chatId, String s) {
+    private synchronized void sendMsg(String chatId, String s) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.enableMarkdown(true);
         sendMessage.setChatId(chatId);
+        String message;
+        if (s.equals("Москва")) {
+            message = WeatherBuilder.getWeather("Moscow").toString();
+        } else if (s.equals("Санкт-Петербург")) {
+            message = WeatherBuilder.getWeather("Sankt-Peterburg").toString();
+        } else {
+            message = "Этот город пока не поддерживается";
+        }
         sendMessage.setText(s);
         setButtons(sendMessage);
         try {
