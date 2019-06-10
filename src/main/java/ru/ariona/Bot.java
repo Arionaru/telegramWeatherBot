@@ -32,7 +32,7 @@ public class Bot extends TelegramLongPollingBot {
         } else {
             message = "Этот город пока не поддерживается";
         }
-        sendMessage.setText(s);
+        sendMessage.setText(message);
         setButtons(sendMessage);
         try {
             sendMessage(sendMessage);
