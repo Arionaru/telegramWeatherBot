@@ -55,7 +55,7 @@ public class WeatherBuilder {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new JSONObject(response);
+        return new JSONObject(response.toString());
     }
 
     public static SimpleWeather getWeather(String city) {
