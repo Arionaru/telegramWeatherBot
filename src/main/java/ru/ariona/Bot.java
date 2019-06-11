@@ -52,7 +52,7 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     public String getBotToken() {
-        return "823926417:AAEdy_gHi38kLHVaa_juw2s8Oq6r46BbZzg";
+        return "secret-key";
     }
 
     private synchronized void setButtons(SendMessage sendMessage) {

@@ -14,7 +14,7 @@ public class WeatherBuilder {
 
     private static final String API_CALL_TEMPLATE =
             "http://api.openweathermap.org/data/2.5/weather?q=";
-    private static final String API_KEY_TEMPLATE = "&lang=ru&units=metric&appid=e770a66ca921832a3e974dd9412ab76b";
+    private static final String API_KEY_TEMPLATE = "&lang=ru&units=metric&appid=secret-key";
 
 
     private static JSONObject getJson(String city) {
