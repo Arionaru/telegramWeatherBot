@@ -24,14 +24,9 @@ public class Bot extends TelegramLongPollingBot {
         SendMessage sendMessage = new SendMessage();
         sendMessage.enableMarkdown(true);
         sendMessage.setChatId(chatId);
-        String message;
-        if (s.equals("Москва")) {
-            message = WeatherBuilder.getWeather("Moscow").toString();
-        } else if (s.equals("Санкт-Петербург")) {
-            message = WeatherBuilder.getWeather("Sankt-Peterburg").toString();
-        } else {
-            message = "Этот город пока не поддерживается";
-        }
+
+        String message = WeatherBuilder.getWeather(s);
+
         sendMessage.setText(message);
         setButtons(sendMessage);
         try {

@@ -14,7 +14,7 @@ public class WeatherBuilder {
 
     private static final String API_CALL_TEMPLATE =
             "http://api.openweathermap.org/data/2.5/weather?q=";
-    private static final String API_KEY_TEMPLATE = "&units=metric&appid=e770a66ca921832a3e974dd9412ab76b";
+    private static final String API_KEY_TEMPLATE = "&lang=ru&units=metric&appid=e770a66ca921832a3e974dd9412ab76b";
 
 
     private static JSONObject getJson(String city) {
@@ -58,16 +58,22 @@ public class WeatherBuilder {
         return new JSONObject(response.toString());
     }
 
-    public static SimpleWeather getWeather(String city) {
+    public static String getWeather(String city) {
 
-        JSONObject allWeather = getJson(city);
+        JSONObject allWeather = null;
+        try {
+            allWeather = getJson(city);
+        } catch (Exception e) {
+            return "Город не найден";
+        }
 
         int temp = allWeather.getJSONObject("main").getInt("temp");
 
         JSONArray weatherArray = allWeather.getJSONArray("weather");
+
         String description = weatherArray.getJSONObject(0).getString("description");
 
-        return new SimpleWeather(temp,description);
+        return "Температура воздуха  " + temp + " градусов, " + description;
     }
 
 }
